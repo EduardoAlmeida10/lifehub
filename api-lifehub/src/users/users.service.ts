@@ -38,9 +38,7 @@ export class UsersService {
       throw new BadRequestException('A senha não foi confirmada corretamente');
     }
 
-    const existsUser = await this.userRepository.findOne({
-      where: { email: dto.email },
-    });
+    const existsUser = await this.findByEmail(dto.email);
 
     if (existsUser) {
       throw new ConflictException(
@@ -58,8 +56,8 @@ export class UsersService {
       await this.userRepository.save(createUser);
       return createUser;
     } catch (error) {
-      this.logger.error(error.message);
-      throw new InternalServerErrorException(error.message);
+      this.logger.error(error);
+      throw new InternalServerErrorException(error);
     }
   }
 }
