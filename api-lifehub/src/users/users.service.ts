@@ -25,6 +25,12 @@ export class UsersService {
     return bcrypt.hash(password, salt);
   }
 
+  async findByEmail(email: string) {
+    return this.userRepository.findOne({
+      where: { email },
+    });
+  }
+
   async create(dto: CreateUserDto) {
     const { password, confirmPassword } = dto;
 
