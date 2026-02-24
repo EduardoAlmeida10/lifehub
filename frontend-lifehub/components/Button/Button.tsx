@@ -18,8 +18,8 @@ export function Button({
     "px-4 py-2 rounded-full font-medium transition-colors duration-200 cursor-pointer";
 
   const variants = {
-    primary: "bg-foreground text-white hover:bg-blue-800",
-    secondary: "bg-gray-200 text-black hover:bg-gray-300",
+    primary: "bg-foreground text-white hover:bg-purple-900",
+    secondary: "bg-gray-200 text-black hover:bg-purple-900",
   };
 
   return (
