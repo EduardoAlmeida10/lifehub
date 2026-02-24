@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Montserrat } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
 
@@ -11,9 +11,12 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "LifeHub",
   description: "Sistema pessoal de organização",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
-export default function RootLayout({
+export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;

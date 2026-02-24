@@ -41,16 +41,17 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center bg-primary h-screen">
-      <div className="flex h-9/10 w-9/12 bg-white rounded-2xl shadow-lg shadow-blue-900">
+      <div className="flex h-9/10 w-9/12 bg-white rounded-s-2xl rounded-e-3xl">
         <div className="flex justify-center items-center w-1/2">
-          <Image src={imgLogin} alt="" width={300} height={300} priority />
+          <Image src={imgLogin} alt="" width={700} height={700} priority />
         </div>
 
         <div className="flex flex-col justify-center items-center bg-secondary w-1/2 h-full rounded-e-2xl text-white px-16">
           <div className="flex flex-col gap-2 items-center mb-10">
             <h1 className="text-3xl">Life Hub</h1>
             <p className="text-[14px] text-center">
-              Um sistema feito para gerenciar as principais atividades do dia a dia
+              Um sistema feito para gerenciar as principais atividades do dia a
+              dia
             </p>
           </div>
 
