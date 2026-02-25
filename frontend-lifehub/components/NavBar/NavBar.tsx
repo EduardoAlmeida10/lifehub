@@ -1,8 +1,17 @@
+'use client'
+
 import { User2Icon } from "lucide-react";
 import Image from "next/image";
 import iconLogo from "@/assets/icons/iconLogo.svg";
+import { useFetchUser } from "@/hooks/users/useFetch";
+import { useAuth } from "@/hooks/useAuth";
 
 export function NavBar() {
+
+  const { token } = useAuth();
+
+  const { user } = useFetchUser(token)
+
   return (
     <nav className="flex justify-between items-center px-8 w-full h-15 bg-primary text-white">
       <div className="flex items-center gap-2">
@@ -11,7 +20,7 @@ export function NavBar() {
       </div>
       <div className="flex gap-2">
         <User2Icon />
-        <p>Eduardo</p>
+        <p>{user?.name}</p>
       </div>
     </nav>
   );
