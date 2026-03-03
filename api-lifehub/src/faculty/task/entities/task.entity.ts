@@ -4,18 +4,20 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 
 import { TaskStatus } from '../enums/task-status.enum';
 import { TaskPriority } from '../enums/task-priority.enum';
+import { Course } from 'src/faculty/course/entities/course.entity';
 
 @Entity('tasks')
 export class Task {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  courseId: string;
+  @ManyToOne(() => Course, (course) => course.tasks)
+  course: Course;
 
   @Column()
   title: string;

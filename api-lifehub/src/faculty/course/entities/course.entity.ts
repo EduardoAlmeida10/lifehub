@@ -4,10 +4,12 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { DayOfWeek } from '../enums/day-of-week.enum';
 import { Semester } from '../enums/semester.enum';
+import { Task } from 'src/faculty/task/entities/task.entity';
 
 @Entity('courses')
 export class Course {
@@ -35,6 +37,9 @@ export class Course {
     array: true,
   })
   daysOfWeek: DayOfWeek[];
+
+  @OneToMany(() => Task, (task) => task.course)
+  tasks: Task[];
 
   @Column()
   schedule: string;
