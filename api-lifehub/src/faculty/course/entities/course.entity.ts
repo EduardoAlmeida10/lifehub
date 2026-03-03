@@ -5,6 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { DayOfWeek } from '../enums/day-of-week.enum';
@@ -12,14 +14,16 @@ import { Semester } from '../enums/semester.enum';
 import { Task } from 'src/faculty/task/entities/task.entity';
 import { Grade } from 'src/faculty/grade/entities/grade.entity';
 import { Absence } from 'src/faculty/absence/entities/absence.entity';
+import { UserEntity } from 'src/users/entities/user.entity';
 
 @Entity('courses')
 export class Course {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  userId: string;
+  @ManyToOne(() => UserEntity, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'userId' })
+  user: UserEntity;
 
   @Column({
     type: 'enum',
