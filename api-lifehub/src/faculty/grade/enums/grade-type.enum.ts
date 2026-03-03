@@ -1,4 +1,4 @@
 export enum GradeType {
-  EXAM = 'EXAM',
-  ASSIGNMENT = 'ASSIGNMENT',
+  EXAM = 'PROVA',
+  ASSIGNMENT = 'TRABALHO',
 }
