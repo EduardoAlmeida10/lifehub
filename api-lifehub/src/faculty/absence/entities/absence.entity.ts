@@ -15,7 +15,7 @@ export class Absence {
   id: string;
 
   @ManyToOne(() => Course, (course) => course.absences, {
-  onDelete: 'CASCADE',
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'courseId' })
   course: Course;
