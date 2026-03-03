@@ -20,7 +20,7 @@ import { FacultyModule } from './faculty/faculty.module';
       password: process.env.LIFEHUB_DB_PASSWORD,
       database: process.env.LIFEHUB_DB_NAME,
       autoLoadEntities: true,
-      synchronize: true, // em produção colocar coma false
+      synchronize: false,
     }),
     UsersModule,
     AuthModule,
