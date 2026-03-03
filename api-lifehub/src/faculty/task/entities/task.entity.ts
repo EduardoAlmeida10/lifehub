@@ -10,18 +10,18 @@ import {
 
 import { TaskStatus } from '../enums/task-status.enum';
 import { TaskPriority } from '../enums/task-priority.enum';
-import { Course } from 'src/faculty/course/entities/course.entity';
+import { CourseEntity } from 'src/faculty/course/entities/course.entity';
 
 @Entity('tasks')
-export class Task {
+export class TaskEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Course, (course) => course.tasks, {
+  @ManyToOne(() => CourseEntity, (course) => course.tasks, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'courseId' })
-  course: Course;
+  course: CourseEntity;
 
   @Column()
   title: string;

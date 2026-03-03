@@ -1,4 +1,4 @@
-import { Course } from 'src/faculty/course/entities/course.entity';
+import { CourseEntity } from 'src/faculty/course/entities/course.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -10,15 +10,15 @@ import {
 } from 'typeorm';
 
 @Entity('absences')
-export class Absence {
+export class AbsenceEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Course, (course) => course.absences, {
+  @ManyToOne(() => CourseEntity, (course) => course.absences, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'courseId' })
-  course: Course;
+  course: CourseEntity;
 
   @Column({ type: 'date' })
   date: Date;

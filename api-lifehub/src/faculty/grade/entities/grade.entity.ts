@@ -9,18 +9,18 @@ import {
 } from 'typeorm';
 
 import { GradeType } from '../enums/grade-type.enum';
-import { Course } from 'src/faculty/course/entities/course.entity';
+import { CourseEntity } from 'src/faculty/course/entities/course.entity';
 
 @Entity('grades')
-export class Grade {
+export class GradeEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Course, (course) => course.grades, {
+  @ManyToOne(() => CourseEntity, (course) => course.grades, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'courseId' })
-  course: Course;
+  course: CourseEntity;
 
   @Column({
     type: 'enum',

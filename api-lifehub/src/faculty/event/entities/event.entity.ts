@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity('events')
-export class Event {
+export class EventEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

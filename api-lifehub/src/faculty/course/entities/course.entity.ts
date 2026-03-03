@@ -11,13 +11,13 @@ import {
 
 import { DayOfWeek } from '../enums/day-of-week.enum';
 import { Semester } from '../enums/semester.enum';
-import { Task } from 'src/faculty/task/entities/task.entity';
-import { Grade } from 'src/faculty/grade/entities/grade.entity';
-import { Absence } from 'src/faculty/absence/entities/absence.entity';
+import { TaskEntity } from 'src/faculty/task/entities/task.entity';
+import { GradeEntity } from 'src/faculty/grade/entities/grade.entity';
+import { AbsenceEntity } from 'src/faculty/absence/entities/absence.entity';
 import { UserEntity } from 'src/users/entities/user.entity';
 
 @Entity('courses')
-export class Course {
+export class CourseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -44,14 +44,14 @@ export class Course {
   })
   daysOfWeek: DayOfWeek[];
 
-  @OneToMany(() => Task, (task) => task.course)
-  tasks: Task[];
+  @OneToMany(() => TaskEntity, (task) => task.course)
+  tasks: TaskEntity[];
 
-  @OneToMany(() => Grade, (grade) => grade.course)
-  grades: Grade[];
+  @OneToMany(() => GradeEntity, (grade) => grade.course)
+  grades: GradeEntity[];
 
-  @OneToMany(() => Absence, (absence) => absence.course)
-  absences: Absence[];
+  @OneToMany(() => AbsenceEntity, (absence) => absence.course)
+  absences: AbsenceEntity[];
 
   @Column()
   schedule: string;
