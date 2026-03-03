@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { TaskStatus } from '../enums/task-status.enum';
@@ -16,7 +17,10 @@ export class Task {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Course, (course) => course.tasks)
+  @ManyToOne(() => Course, (course) => course.tasks, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'courseId' })
   course: Course;
 
   @Column()
