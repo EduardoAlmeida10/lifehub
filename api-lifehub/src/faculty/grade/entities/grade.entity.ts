@@ -4,17 +4,23 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { GradeType } from '../enums/grade-type.enum';
+import { Course } from 'src/faculty/course/entities/course.entity';
 
 @Entity('grades')
 export class Grade {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  courseId: string;
+  @ManyToOne(() => Course, (course) => course.grades, {
+  onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'courseId' })
+  course: Course;
 
   @Column({
     type: 'enum',
