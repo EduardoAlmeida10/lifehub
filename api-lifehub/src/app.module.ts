@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { UsersModule } from './users/users.module';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { FacultyModule } from './faculty/faculty.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    FacultyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
