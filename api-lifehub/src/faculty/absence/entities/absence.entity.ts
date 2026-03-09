@@ -20,7 +20,23 @@ export class AbsenceEntity {
   @JoinColumn({ name: 'courseId' })
   course: CourseEntity;
 
-  @Column({ type: 'date' })
+  @Column({
+    type: 'date',
+    transformer: {
+      to: (value: Date) => {
+        if (!value) return value;
+        // Extrai YYYY-MM-DD usando métodos UTC (não local)
+        const year = value.getUTCFullYear();
+        const month = String(value.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(value.getUTCDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      },
+      from: (value: string) => {
+        if (!value) return value;
+        return new Date(value + 'T00:00:00.000Z');
+      },
+    },
+  })
   date: Date;
 
   @Column()
