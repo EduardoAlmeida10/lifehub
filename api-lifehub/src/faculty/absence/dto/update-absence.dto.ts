@@ -1,4 +1,13 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateAbsenceDto } from './create-absence.dto';
+import { IsBoolean, IsDateString, IsOptional } from 'class-validator';
+import { IsNotFutureDate } from 'src/common/validators/is-not-future-date.validator';
 
-export class UpdateAbsenceDto extends PartialType(CreateAbsenceDto) {}
+export class UpdateAbsenceDto {
+  @IsOptional()
+  @IsDateString()
+  @IsNotFutureDate()
+  date?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  present?: boolean;
+}
