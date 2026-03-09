@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   NotFoundException,
@@ -9,6 +10,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AbsenceEntity } from './entities/absence.entity';
 import { Repository } from 'typeorm';
 import { CourseEntity } from '../course/entities/course.entity';
+import { parseDate } from 'src/common/utils/date.util';
 
 @Injectable()
 export class AbsenceService {
@@ -28,7 +30,7 @@ export class AbsenceService {
       throw new NotFoundException('Course not found or you do not have access');
     }
 
-    const dateObj = new Date(dto.date);
+    const dateObj = parseDate(dto.date);
 
     const existing = await this.absenceRepository.findOne({
       where: {
@@ -125,7 +127,7 @@ export class AbsenceService {
     const absence = await this.findOne(id, userId);
 
     if (dto.date !== undefined) {
-      absence.date = new Date(dto.date);
+      absence.date = parseDate(dto.date);
     }
 
     if (dto.present !== undefined) {
